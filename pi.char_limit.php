@@ -31,7 +31,7 @@ $plugin_info = array(
 						'pi_version'		=> '1.1',
 						'pi_author'			=> 'Rick Ellis',
 						'pi_author_url'		=> 'http://expressionengine.com/',
-						'pi_description'	=> 'Permits you to limit the number of characters in some text',
+						'pi_description'	=> 'Permits you to limit the number of characters in some text and strips html tags',
 						'pi_usage'			=> Char_limit::usage()
 					);
 
@@ -62,7 +62,7 @@ class Char_limit {
 		$total = ( ! is_numeric($total)) ? 500 : $total;
 		
 		$str = ($str == '') ? $this->EE->TMPL->tagdata : $str;
-				
+		$str = strip_tags($str);				
  		$this->return_data = $this->EE->functions->char_limiter($str, $total);
 	}
 
